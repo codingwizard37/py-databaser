@@ -27,6 +27,7 @@ The six languages are the six 'official' languages of the United Nations, which 
   2. Remove extraneous data (see Challenges)
   3. Add a `meta` tag to the JSON data containing language, book, and chapter number information.
   4. Add the document to `MongoDB`
+  * As a footnote, I'm aware that steps 1 and 2 could have been combined as a single step, however scraping and then adding to a database all in one go (although I will admit is more streamlined), made step 2 considerably slower, because once the text files had been downloaded, `databaser.py` could just rip through the files. Also that process wouldn't need to leave a JSON backup, which I ended up needing in order to transfer my database to my web server.
 3. Using Vue, Node, and Express, create a website
   1. I won't write anything about this, to spare you of the details and because that information would be outside of the scope of this class anyway.
 
@@ -44,4 +45,4 @@ a. This class taught my how to program in Python, about which I had not yet lear
 
 b. I think that the project in and of itself may be to the interest of some employers. Webscraping is also a skill which I'm sure is quite helpful in the work force. Creating a database is also a helpful skill.
 
-### Word count: 1066
+### Word count: 1149

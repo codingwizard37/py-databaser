@@ -10,8 +10,10 @@ with client:
     mydb = client.reader
     chapters = mydb["chapters"]
     chapters.delete_many({})
+    # get a list of language folders
     lang_list = [x for x in os.walk('./texts/')][0][1]
     print(lang_list)
+
     with open("ch_numbers.json", "r") as infile:
         book_code_dict = json.load(infile)
     for lang in lang_list:
@@ -23,5 +25,6 @@ with client:
                     # eliminate weird empty verses
                     while "" in ch_dict["verses"]:
                         ch_dict["verses"].remove("")
+                    # add a meta key
                     ch_dict["meta"] = {"lang": lang, "book": book, "ch_num": (ch_num + 1)}
                     chapters.insert_one(ch_dict)

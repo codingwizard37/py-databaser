@@ -7,6 +7,7 @@ import bs4
 from bs4 import BeautifulSoup
 
 
+# Given a url, returns a dictionary of the contents of that chapter
 def get_chapter(url):
     temp_chapter = dict()
     temp_chapter["header"] = get_header_attributes(url)
@@ -15,12 +16,14 @@ def get_chapter(url):
     return temp_chapter
 
 
+# Given a url, returns a bs4 tag of the header
 def get_header_tag(url):
     html = urlopen(url)
     bs_obj = BeautifulSoup(html.read(), features="html.parser")
     return bs_obj.find("div", class_="body").header
 
 
+# Given a url, returns a dictionary containg the conetents of the chapter header
 def get_header_attributes(url):
     header_dict = dict()
     header = get_header_tag(url)
@@ -36,12 +39,14 @@ def get_header_attributes(url):
     return header_dict
 
 
+# Given a url, returns a bs4 tag of the verses
 def get_verse_tag(url):
     html = urlopen(url)
     bs_obj = BeautifulSoup(html.read(), features="html.parser")
     return bs_obj.find("div", class_="body-block")
 
 
+# Given a url, returns a list containg the conetents of each verse
 def get_verses(url):
     verse_list = []
     verses = get_verse_tag(url)
@@ -65,10 +70,14 @@ def get_verses(url):
     return verse_list
 
 
-lang_list = ["deu", "mlg", "swe"]
+# List of languages. These languages don't need to be all scraped at once.
+lang_list = ["deu", "eng", "fin", "fra", "mlg", "rus", "swe", "rus", "zhs"]
 with open("ch_numbers.json", "r") as infile:
     book_code_dict = json.load(infile)
 
+# I'm aware of list comprehension, which I could've used to make a list of
+# urls, instead of this triple for loop, but that was causing request issues
+# for some reason.
 for lang in lang_list:
     for book, ch_max in book_code_dict.items():
         for ch_num in range(ch_max):
@@ -76,6 +85,7 @@ for lang in lang_list:
                   f"bofm/{book}/{ch_num + 1}?lang={lang} "
             ch_dict = get_chapter(url)
 
+            # creates folders which don't exist yet
             if not os.path.exists(f"./{lang}/{book}/"):
                 os.makedirs(f"./{lang}/{book}/")
             with open(f"./{lang}/{book}/{ch_num + 1:02d}.json", "w") as outfile:
