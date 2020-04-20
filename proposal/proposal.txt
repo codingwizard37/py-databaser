@@ -1,5 +1,0 @@
-Write a 600-900 word proposal for your final project. Answer at least the following questions:
-1. What do you want to accomplish and why? How will this help you develop the programming skills you might need in the future?
-2. What data will you use?
-3. What is your plan to carry out this project? How will you get the data? How will you accomplish the programming tasks? How will you ensure and measure accuracy?
-4. What programming skills and Python data structures will you need for this project?
