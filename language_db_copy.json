@@ -1,0 +1,38 @@
+"languages": [
+    {
+      short: "deu",
+      long: "Deutsch"
+    },
+    {
+      short: "eng",
+      long: "English"
+    },
+    {
+      short: "spa",
+      long: "Español"
+    },
+    {
+      short: "fra",
+      long: "Français"
+    },
+    {
+      short: "mlg",
+      long: "Malagasy"
+    },
+    {
+      short: "fin",
+      long: "Suomi"
+    },
+    {
+      short: "swe",
+      long: "Svenska"
+    },
+    {
+      short: "rus",
+      long: "Русский"
+    },
+    {
+      short: "zhs",
+      long: "简体中文"
+    },
+  ],
